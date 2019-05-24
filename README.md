@@ -1,22 +1,13 @@
-## **Web Application Development Role Description**
+## **Secret Family Recipes Cookbook**
 
-React JS has been your focus over the last 4 weeks. You will use those skills learned during the React Unit to build out a web application that consumes a CRUD API.
+Pitch: Anyone can go out and buy a cookbook these days, but I want a place to store all my secret family recipes, handed down from generation to generation. The little cards my grandma wrote the recipes on in her beautiful cursive are getting lost or are hard to read. I need somewhere secure to keep my recipes with me at all times!
 
-## **The `Web Application Development` unit explored the following topics:**
+MVP:
+- Onboarding process for a new user
+- Ability to enter a new recipe, including title, source (ie grandma ethel), ingredients, instructions, and category (dinner, chicken, dessert, pasta, etc.) and edit or delete it later. 
+-Homepage to view all entered recipes. 
+-Ability to search for recipes by title or tagged categories 
 
-- Functional Components 1 - 2
-- Class Components 1-2
-- React Tooling
-- The React Life-cycle
-- React Composition Patterns
-- CSS in JS
-- React Router 1 - 2
-- HTTP/AJAX 1 - 2
-- Redux Fundamentals 1 - 2
-- Async Redux w/ Redux Thunk
-
-For your project this week, you will demonstrate proficiency by working with a group of students cross section to deliver a minimum viable product (MVP) over the course of the week.
-
-## **Your primary role as the Web Application Architect:**
-
-You will use your skills to be responsible for the Front End Architecture of this project. You will work directly with the UI Developer and the Back End Developer to ensure that all React components are wired up in proper fashion.
+Stretch:
+Ability to upload a picture of the original recipe along with the recipe entry. 
+By default all recipes uploaded can only be viewed by the person loggin in, a stretch goal would add the ability to invite someone with the link to view the recipe. 
