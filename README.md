@@ -1,5 +1,3 @@
-Front End Architect
-
 ## **Web Application Development Role Description**
 
 React JS has been your focus over the last 4 weeks. You will use those skills learned during the React Unit to build out a web application that consumes a CRUD API.
