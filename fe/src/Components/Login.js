@@ -24,7 +24,7 @@ height: 300px;
 display: flex;
 flex-direction: column;
 align-items: center;
-border : 1px solid lightgrey;
+border: 1px solid lightgrey;
 padding: 20px;
 `;
 
@@ -34,7 +34,7 @@ height: 30px;
 margin: 10px 0;
 font-size: 15px;
 border-radius: 5px;
-background-color: trasparent;
+background-color: transparent;
 color: black;
 font-weight: bold;
 font-family: 'Nunito', sans-serif;
