@@ -11,7 +11,7 @@ const EachRecipe = styled.div`
     justify-content : center;
     align-items     : center;
     width           : 350px;
-    height          : 350px;
+    height          : 250px;
     margin          : 20px 20px;
     line-height     : 25px;
   border: 1px solid lightgrey;
@@ -20,18 +20,34 @@ const EachRecipe = styled.div`
 
 const Title = styled.p`
 font-size: 25px;
+padding: 25px;
 `;
 
+const Category = styled.p`
+font-size: 15px;
+display: flex;
+justify-content: center;
+`;
 
+const SubCategory = styled.p`
+font-size: 20px;
+`;
+
+const Button = styled.button`
+margin: 20px;
+width: 150px;
+height: 40px;
+background: transparent;
+`;
 
 class Recipe extends React.Component {
     render() {
         return (
             <EachRecipe>
-                <Title> <strong>{this.props.recipe.name}</strong></Title>
-                <p>CATEGORY: <strong>{this.props.recipe.category}</strong></p>
-              
-                <Link to={`/recipes/${this.props.recipe.id}`}><button>Get Recipe</button></Link>
+                <Title> <strong>~ {this.props.recipe.name} ~</strong></Title>
+                <Category>CATEGORY: <SubCategory><strong>{this.props.recipe.category}</strong></SubCategory></Category>
+
+                <Link to={`/recipes/${this.props.recipe.id}`}><Button>Get Recipe</Button></Link>
             </EachRecipe>
         )
     }

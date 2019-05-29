@@ -15,7 +15,7 @@ const EachRecipe=styled.div`
     margin          : 20px 20px;
     line-height     : 25px;
   border: 1px solid lightgrey;
-    border-radius   : 5px;
+    border-radius   : 0px;
 `;
 
 class Recipe extends React.Component {
@@ -30,7 +30,7 @@ class Recipe extends React.Component {
         let recipe = this.props.recipes.find(recipe => recipe.id === parseInt(id));
         return (
             <EachRecipe>
-                <p>NAME: <strong>{recipe.name}</strong></p>
+                <p>NAME:<strong>{recipe.name}</strong></p>
                 <p>CATEGORY: <strong>{recipe.category}</strong></p>
                 <p>SOURCE: <strong>{recipe.source}</strong></p>
                 <p>INGREDIENTS: <strong>{recipe.ingredients}</strong></p>

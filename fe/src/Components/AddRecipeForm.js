@@ -34,7 +34,6 @@ display: flex;
 justify-content: space-between;
 align-items:center;
 font-weight: bold;
-
 `;
 
 const ButtonDiv = styled.div`
