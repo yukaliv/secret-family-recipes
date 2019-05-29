@@ -1,0 +1,7 @@
+.main-image {
+    background-image: url('./Image/salad.jpg');
+    background-size : cover;
+    resize          : both;
+    overflow        : scrol;
+    margin          : 30px 0;
+}

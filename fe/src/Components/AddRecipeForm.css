@@ -1,0 +1,41 @@
+.image {
+    background-image: url('./Image/tomato.jpg');
+    background-size : cover;
+    /* width        : 160px;
+    height          : 160px;
+    border          : 2px solid;
+    color           : pink; */
+    resize          : both;
+    overflow        : scrol;
+    opacity         : 0.6;
+}
+
+.recipeInput {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    width           : 700px;
+    height          : 600px;
+    background-color: #e3e3e3;
+    opacity         : 0.9;
+
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance   : none;
+    appearance        : none;
+    /* remove default arrow */
+    width           : 250px;
+    height          : 35px;
+    margin          : 10px;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: transparent;
+  
+    font-weight     : bold;
+    border: none;
+border-bottom: solid 1px lightgrey;
+}
