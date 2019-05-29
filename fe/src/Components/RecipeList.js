@@ -3,22 +3,34 @@ import { connect } from 'react-redux';
 import Recipe from './Recipe';
 import SearchBar from './SearchBar';
 import styled from 'styled-components';
+import { getRecipes } from '../Actions';
+import './RecipeList.css';
 
-
-const RecipeLists =styled.div`
+const RecipeLists = styled.div`
     display        : flex;
     justify-content: center;
     flex-wrap      : wrap;
 `;
 
+const Quote = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+height: 400px;
+`;
+
+
 class RecipeList extends React.Component {
     constructor(props) {
         super(props);
+
     }
     componentDidMount() {
+        this.props.getRecipes();
     }
 
     render() {
+        this.props.getRecipes();
         console.log(this.props)
         let recipesToDisplay = [];
         if (this.props.filteredRecipes.length > 0) {
@@ -29,6 +41,11 @@ class RecipeList extends React.Component {
         }
         return (
             <div>
+                <div className='main-image'>
+                    <Quote>
+                        <p></p>
+                    </Quote>
+                </div>
                 <SearchBar />
                 <RecipeLists>
                     {recipesToDisplay.map(recipe => <Recipe recipe={recipe} />)}
@@ -45,4 +62,4 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-    mapStateToProps, {})(RecipeList);
+    mapStateToProps, { getRecipes })(RecipeList);

@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 import RecipeList from './Components/RecipeList';
 import AddRecipeForm from './Components/AddRecipeForm';
+import RecipeDetails from './Components/RecipeDetails';
 import { Route, Link } from 'react-router-dom';
 import EditRecipeForm from './Components/EditRecipeForm';
 import styled from 'styled-components';
+import Login from './Components/Login';
 
 const AppDiv = styled.div`
 max-width: 900px;
@@ -36,7 +38,6 @@ align-items: center;
 padding: 15px;
 border-top: solid 1px lightgrey;
 border-bottom: solid 1px lightgrey;
-
 `;
 
 
@@ -45,8 +46,7 @@ function App() {
     <AppDiv>
 
       <Nav>
-        <Link to='/recipes'> <p>JOIN</p> </Link>
-        <Link to='/recipes'><p> LOG IN </p></Link>
+        <Link to='/login'><p> SIGN UP / LOG IN </p></Link>
       </Nav>
 
       <Header>
@@ -57,12 +57,13 @@ function App() {
         <Link to='/recipes'><p>View Recipes</p></Link>
         <Link to='/addRecipe'><p>Add Recipe</p></Link>
       </MenuBar>
-
-
-      {/* <Route path='/login' /> */}
-      <Route path='/recipes' component={RecipeList} />
+     
+      <Route path='/login' component={Login} />
+      <Route exact path='/recipes' component={RecipeList} />
+      <Route path='/recipes/:id' component={RecipeDetails} />
       <Route path='/addRecipe' component={AddRecipeForm} />
       <Route path='/editRecipe/:id' component={EditRecipeForm} />
+  
     </AppDiv>
   );
 
