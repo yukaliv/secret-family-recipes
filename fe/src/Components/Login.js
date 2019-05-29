@@ -37,6 +37,7 @@ border-radius: 5px;
 background-color: trasparent;
 color: black;
 font-weight: bold;
+font-family: 'Nunito', sans-serif;
 `;
 
 const LoginButton = styled.div`

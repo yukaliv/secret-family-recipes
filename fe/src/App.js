@@ -11,7 +11,7 @@ import Login from './Components/Login';
 const AppDiv = styled.div`
 max-width: 1265px;
 margin: 0 auto;
-font-family: 'Arapey', serif;
+font-family:  'Cherry Swash', cursive;
 `;
 
 const Header = styled.header`
@@ -21,9 +21,9 @@ align-items: center;
 height: 45px;
 width: 1230px;
 padding: 0 20px;
-
-color: black;
-background-color: lightgrey;
+font-family: 'Mitr', sans-serif;
+background-color:#6d748c;
+color:black;
 `;
 
 const SubHeader = styled.header`
@@ -32,6 +32,7 @@ justify-content: center;
 align-items: center;
 font-size: 25px;
 margin: 20px;
+color:#1f1f44;
 `;
 
 const MenuBar = styled.div`
@@ -40,13 +41,18 @@ justify-content: center;
 align-items: center;
 padding: 15px;
 font-size: 20px;
-border-top: solid 1px lightgrey;
-border-bottom: solid 1px lightgrey;
+border-top: solid 1px #1f1f44;
+border-bottom: solid 1px #1f1f44;
 `;
 
 const NavP = styled.p`
 padding: 0 25px;
-color: black;
+color: white;
+`;
+
+const MenuP=styled.p`
+padding: 0 25px;
+color: #a00000;
 `;
 
 const MainContent=styled.div`
@@ -57,7 +63,7 @@ margin: 0 auto;
 const Footer=styled.footer`
 height: 45px;
 width: 1265px;
-background-color: lightgrey;
+background-color: #6d748c;
 margin-top: 55px;
 `;
 
@@ -74,8 +80,8 @@ function App() {
       </SubHeader>
 
       <MenuBar>
-        <Link to='/recipes'  style={{ textDecoration: 'none' }}><NavP>View Recipes</NavP></Link>
-        <Link to='/addRecipe'  style={{ textDecoration: 'none' }}><NavP>Add Recipe</NavP></Link>
+        <Link to='/recipes'  style={{ textDecoration: 'none' }}><MenuP>View Recipes</MenuP></Link>
+        <Link to='/addRecipe'  style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
       </MenuBar>
      
       <Route path='/login' component={Login} />

@@ -13,14 +13,14 @@ const Input = styled.input`
 width: 350px;
 height: 40px;
 border: none;
-border-bottom: 1px solid lightgrey;
+border-bottom: 1px solid #1f1f44;
 `;
 
 const Titleh2 = styled.h2`
 display: flex; 
 justify-content: center;
 align-items: center;
-border-top: solid 1px lightgrey;
+border-top: solid 1px #1f1f44;
 padding: 25px;
 margin: 0;
 font-size: 28px;

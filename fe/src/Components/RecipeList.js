@@ -8,7 +8,7 @@ import './RecipeList.css';
 
 const RecipeLists = styled.div`
     display        : flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap      : wrap;
 
 `;
