@@ -6,7 +6,7 @@
     border          : 2px solid;
     color           : pink; */
     resize          : both;
-    overflow        : scrol;
+    overflow        : scroll;
     opacity         : 0.6;
 }
 
@@ -34,8 +34,7 @@ select {
     justify-content : center;
     align-items     : center;
     background-color: transparent;
-  
     font-weight     : bold;
-    border: none;
-border-bottom: solid 1px lightgrey;
+    border          : none;
+    border-bottom   : solid 1px lightgrey;
 }
