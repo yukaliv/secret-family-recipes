@@ -14,7 +14,7 @@ const EachRecipe = styled.div`
     height          : 350px;
     margin          : 20px 20px;
     line-height     : 25px;
-  border: 1px solid lightgrey;
+    border          : 1px solid lightgrey;
     border-radius   : 5px;
 `;
 

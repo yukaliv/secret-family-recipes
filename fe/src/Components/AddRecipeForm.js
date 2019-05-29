@@ -9,7 +9,7 @@ const RecipeForm = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items:center;
+align-items: center;
 margin: 30px;
 height: 750px;
 `;
@@ -24,7 +24,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 background-color: transparent;
-color:#0e1111 ;
+color: #0e1111 ;
 font-size: 10px;
 `;
 
@@ -32,14 +32,13 @@ const EachInput = styled.div`
 width: 430px;
 display: flex;
 justify-content: space-between;
-align-items:center;
+align-items: center;
 font-weight: bold;
-
 `;
 
 const ButtonDiv = styled.div`
 display: flex;
-justify-content:space-around;
+justify-content: space-around;
 margin: 30px;
 `;
 
