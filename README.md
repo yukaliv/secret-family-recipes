@@ -9,5 +9,5 @@ MVP:
 -Ability to search for recipes by title or tagged categories 
 
 Stretch:
-Ability to upload a picture of the original recipe along with the recipe entry. 
-By default all recipes uploaded can only be viewed by the person loggin in, a stretch goal would add the ability to invite someone with the link to view the recipe. 
+Ability to upload a picture of the original recipe along with the recipe entry.
+By default all recipes uploaded can only be viewed by the person logging in. A stretch goal would add the ability to invite someone with the link to view the recipe.
