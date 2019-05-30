@@ -4,6 +4,10 @@ export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
 export const ADD_RECIPE_START = 'ADD_RECIPE_START';
 export const ADD_RECIPE_FAILURE = 'ADD_RECIPE_FAILURE';
 
+export const EDIT_RECIPE_SUCCESS = 'EDIT_RECIPE_SUCCESS';
+export const EDIT_RECIPE_START = 'EDIT_RECIPE_START';
+export const EDIT_RECIPE_FAILURE = 'EDIT_RECIPE_FAILURE';
+
 export const SEARCH_RECIPE = 'SEARCH_RECIPE';
 
 export const DELETE_RECIPE_START = 'DELETE_RECIPE_START';
@@ -22,6 +26,15 @@ export const GET_CATEGORIES_START = 'GET_CATEGORIES_START';
 export const GET_CATEGORIES_SUCCESS = 'GET_CATEGORIES_SUCCESS';
 export const GET_CATEGORIES_FAILURE = 'GET_CATEGORIES_FAILURE';
 
+export const REGISTER_USER_START = 'REGISTER_USER_START';
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
+
+
+export const LOGIN_USER_START = 'LOGIN_USER_START';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+
 export const EDIT_RECIPE = 'EDIT_RECIPE';
 
 const baseEndpoint = 'https://secret-family-recipes.herokuapp.com/api/';
@@ -29,12 +42,14 @@ const baseEndpoint = 'https://secret-family-recipes.herokuapp.com/api/';
 export const addRecipe = (newRecipe) => dispatch => {
     console.log(newRecipe);
     dispatch({ type: ADD_RECIPE_START });
+    console.log("this is the newRecipe that I'm sending to the backend", newRecipe);
     return axios
-        .post(baseEndpoint + 'recipes')
+        .post(baseEndpoint + 'recipes', newRecipe)
         .then(res => {
+            console.log("this is the newRecipe that I'm sending to the backend", newRecipe);
             dispatch({
                 type: ADD_RECIPE_SUCCESS,
-                payload: newRecipe
+                payload: res.data
             })
         })
         .catch(err => {
@@ -72,11 +87,28 @@ export const deleteRecipe = (id) => dispatch => {
         })
 }
 
-export const editRecipe = (newRecipe) => {
-    return {
-        type: EDIT_RECIPE,
-        payload: newRecipe
-    }
+export const editRecipe = (updatedRecipe) => dispatch => {
+    dispatch({
+        type: EDIT_RECIPE_SUCCESS
+    })
+    let id = updatedRecipe.id;
+    console.log("this is the ID editRecipe: ", id);
+    console.log("this is the ID editRecipe: ", updatedRecipe);
+    delete updatedRecipe.id;
+    console.log("this is the ID editRecipe: ", updatedRecipe);
+    return axios
+        .put(baseEndpoint + 'recipes/' + id, updatedRecipe)
+        .then(res => {
+            dispatch({
+                type: EDIT_RECIPE_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: EDIT_RECIPE_FAILURE, payload: err
+            })
+        })
 }
 
 export const getRecipe = (id) => dispatch => {
@@ -97,12 +129,12 @@ export const getRecipe = (id) => dispatch => {
         })
 }
 
-export const getRecipes = () => dispatch =>{
+export const getRecipes = () => dispatch => {
     dispatch({
         type: GET_RECIPES_START
     })
     return axios
-        .get(baseEndpoint + 'recipes' )
+        .get(baseEndpoint + 'recipes')
         .then(res => {
             dispatch({
                 type: GET_RECIPES_SUCCESS, payload: res.data
@@ -116,12 +148,12 @@ export const getRecipes = () => dispatch =>{
 }
 
 
-export const getCategories = () => dispatch =>{
+export const getCategories = () => dispatch => {
     dispatch({
         type: GET_CATEGORIES_START
     })
     return axios
-        .get(baseEndpoint + 'categories' )
+        .get(baseEndpoint + 'categories')
         .then(res => {
             dispatch({
                 type: GET_CATEGORIES_SUCCESS, payload: res.data
@@ -130,6 +162,44 @@ export const getCategories = () => dispatch =>{
         .catch(err => {
             dispatch({
                 type: GET_CATEGORIES_FAILURE, payload: err
+            })
+        })
+}
+
+export const registerUser = (newUser) => dispatch => {
+    console.log('hi', newUser)
+    dispatch({
+        type: REGISTER_USER_START
+    })
+    return axios
+        .post('https://secret-family-recipes.herokuapp.com/api/auth/register', newUser)
+        .then(res => {
+            dispatch({
+                type: REGISTER_USER_SUCCESS, payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: REGISTER_USER_FAILURE, payload: err
+            })
+        })
+}
+
+export const loginUser = (user) => dispatch => {
+    console.log('hi', user)
+    dispatch({
+        type: LOGIN_USER_START
+    })
+    return axios
+        .post('https://secret-family-recipes.herokuapp.com/api/auth/login', user)
+        .then(res => {
+            dispatch({
+                type: LOGIN_USER_SUCCESS, payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: LOGIN_USER_FAILURE, payload: err
             })
         })
 }

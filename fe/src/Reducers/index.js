@@ -3,19 +3,31 @@ import {
     ADD_RECIPE_START,
     ADD_RECIPE_FAILURE,
     SEARCH_RECIPE,
-    EDIT_RECIPE,
+    EDIT_RECIPE_START,
+    EDIT_RECIPE_SUCCESS,
+    EDIT_RECIPE_FAILURE,
     GET_RECIPES_START,
     GET_RECIPES_SUCCESS,
     GET_RECIPES_FAILURE,
+    GET_RECIPE_START,
+    GET_RECIPE_SUCCESS,
+    GET_RECIPE_FAILURE,
     DELETE_RECIPE_SUCCESS,
     DELETE_RECIPE_FAILURE,
     DELETE_RECIPE_START,
     GET_CATEGORIES_START,
     GET_CATEGORIES_SUCCESS,
     GET_CATEGORIES_FAILURE,
+    REGISTER_USER_FAILURE,
+    REGISTER_USER_START,
+    REGISTER_USER_SUCCESS,
+    LOGIN_USER_FAILURE,
+    LOGIN_USER_START,
+    LOGIN_USER_SUCCESS
 } from "../Actions";
 
 const initialState = {
+    isLoggedIn: false,
     recipes: [],
     filteredRecipes: [],
     categories: [],
@@ -25,7 +37,18 @@ const initialState = {
     updatingRecipe: false,
     deletingRecipe: false,
     fetchingCategories: false,
-    error: null
+    editingRecipe: false,
+    error: null,
+    registeringUser: false,
+    loggingIn: false,
+    recipe: {
+        name: '',
+        source: '',
+        ingredients: '',
+        instructions: '',
+        category: '',
+        id: ''
+    }
 }
 
 function reducer(state = initialState, action) {
@@ -47,6 +70,23 @@ function reducer(state = initialState, action) {
                 fetchingRecipes: false,
                 error: action.payload
             }
+        case GET_RECIPE_START:
+            return {
+                ...state,
+                fetchingRecipe: true
+            }
+        case GET_RECIPE_SUCCESS:
+            return {
+                ...state,
+                fetchingRecipe: false,
+                recipe: action.payload
+            }
+        case GET_RECIPE_FAILURE:
+            return {
+                ...state,
+                fetchingRecipe: false,
+                error: action.payload
+            }
         case DELETE_RECIPE_START:
             return {
                 ...state,
@@ -65,6 +105,7 @@ function reducer(state = initialState, action) {
                 error: action.payload
             }
         case ADD_RECIPE_SUCCESS:
+            console.log("add recipe success", action.payload)
             return {
                 ...state,
                 // recipes: [
@@ -74,11 +115,13 @@ function reducer(state = initialState, action) {
                 addingRecipe: true
             }
         case ADD_RECIPE_START:
+            console.log("add recipe start", action.payload)
             return {
                 ...state,
                 addingRecipe: true
             }
         case ADD_RECIPE_FAILURE:
+            console.log("add recipe failure", action.payload)
             return {
                 ...state,
                 addingRecipe: false,
@@ -89,30 +132,40 @@ function reducer(state = initialState, action) {
                 ...state,
                 filteredRecipes: action.payload
             }
-
-        // case DELETE_RECIPE:
-        //     // TODO(yuka) remove this once backend is ready
-
-        //     console.log("this is recipe.id: ", typeof state.recipes[0].id);
-        //     console.log("this is action.payload: ", typeof action.payload);
-        //     let recipesWithoutDeletedRecipes = state.recipes.filter(recipe => recipe.id !== action.payload);
-        //     let filteredRecipesWithoutDeletedRecipes = state.filteredRecipes.filter(recipe => recipe.id !== action.payload);
-        //     return {
-        //         ...state,
-        //         recipes: recipesWithoutDeletedRecipes,
-        //         filteredRecipes: filteredRecipesWithoutDeletedRecipes
-        //     }
-        case EDIT_RECIPE:
-            let result = state.recipes.map(recipe => {
-                if (recipe.id === action.payload.id) {
-                    return action.payload;
-                } else {
-                    return recipe;
-                }
-            })
+        case REGISTER_USER_START:
             return {
                 ...state,
-                // recipes: result
+                registeringUser: true
+
+            }
+        case REGISTER_USER_SUCCESS:
+            console.log('hi i am in reducer', action.payload)
+            localStorage.setItem("userToken", action.payload.token);
+            return {
+                ...state,
+                registeringUser: false,
+                isLoggedIn: true
+            }
+        case REGISTER_USER_FAILURE:
+            return {
+                ...state,
+                registeringUser: false,
+                error: action.payload
+            }
+        case EDIT_RECIPE_START:
+            return {
+                ...state,
+                editingRecipe: true
+            }
+        case EDIT_RECIPE_SUCCESS:
+            return {
+                ...state,
+                editingRecipe: false
+            }
+        case EDIT_RECIPE_FAILURE:
+            return {
+                ...state,
+                editingRecipe: false
             }
         case GET_CATEGORIES_START:
             return {
@@ -131,9 +184,48 @@ function reducer(state = initialState, action) {
                 fetchingCategories: false,
                 error: action.payload
             }
+        case LOGIN_USER_START:
+            return {
+                ...state,
+                loggingIn: true
+            }
+        case LOGIN_USER_SUCCESS:
+            //todo: use actual token from API once it's available    
+            localStorage.setItem("userToken", action.payload.token);
+            return {
+                ...state,
+                loggingIn: false,
+                isLoggedIn: true
+            }
+        case LOGIN_USER_FAILURE:
+            return {
+                ...state,
+                loggingIn: false
+
+            }
+
         default:
             return state;
     }
 }
 
 export default reducer;
+
+
+
+
+
+
+
+ // case DELETE_RECIPE:
+        //     // TODO(yuka) remove this once backend is ready
+
+        //     console.log("this is recipe.id: ", typeof state.recipes[0].id);
+        //     console.log("this is action.payload: ", typeof action.payload);
+        //     let recipesWithoutDeletedRecipes = state.recipes.filter(recipe => recipe.id !== action.payload);
+        //     let filteredRecipesWithoutDeletedRecipes = state.filteredRecipes.filter(recipe => recipe.id !== action.payload);
+        //     return {
+        //         ...state,
+        //         recipes: recipesWithoutDeletedRecipes,
+        //         filteredRecipes: filteredRecipesWithoutDeletedRecipes
+        //     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { editRecipe } from "../Actions";
+import { editRecipe, getRecipe } from "../Actions";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Recipe from "./Recipe";
@@ -57,9 +57,9 @@ const ButtonDiv = styled.div`
 
 const Button = styled.button`
 margin: 20px;
-  width: 150px;
-  height: 40px;
-  background: #6d748c;
+width: 150px;
+height: 40px;
+background: #6d748c;
 color: white;
 font-size: 15px;
 :hover {
@@ -73,25 +73,16 @@ class EditRecipeForm extends React.Component {
     state = {
         id: "",
         name: "",
-        category: "",
         source: "",
         ingredients: "",
         instructions: ""
     };
 
     componentDidMount() {
-        let id = parseInt(this.props.match.params.id);
-        let currentRecipe = this.props.recipes.find(recipe => recipe.id === id);
-        console.log(this.props.recipes, "hi");
-        console.log(id, "hi");
         this.setState({
-            id: id,
-            name: currentRecipe.name,
-            category: currentRecipe.category,
-            source: currentRecipe.source,
-            ingredients: currentRecipe.ingredients,
-            instructions: currentRecipe.instructions
-        });
+            id: this.props.match.params.id
+        })
+        this.props.getRecipe(this.props.match.params.id);
     }
 
     handleChange = event => {
@@ -107,6 +98,7 @@ class EditRecipeForm extends React.Component {
     };
 
     render() {
+
         return (
             <div>
                 <div className="editImage">
@@ -121,17 +113,6 @@ class EditRecipeForm extends React.Component {
                                     placeholder="name"
                                     value={this.state.name}
                                     name="name"
-                                />
-                            </EachInput>
-
-                            <EachInput>
-                                <p>CATEGORY :</p>
-                                <Input
-                                    className="input"
-                                    onChange={this.handleChange}
-                                    placeholder="category"
-                                    value={this.state.category}
-                                    name="category"
                                 />
                             </EachInput>
 
@@ -187,11 +168,11 @@ class EditRecipeForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    recipes: state.recipes,
-    filteredRecipes: state.filteredRecipes
+    recipe: state.recipe,
+    fetchingRecipe: state.fetchingRecipe
 });
 
 export default connect(
     mapStateToProps,
-    { editRecipe }
+    { editRecipe, getRecipe }
 )(EditRecipeForm);
