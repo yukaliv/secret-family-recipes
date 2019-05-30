@@ -25,7 +25,7 @@ select {
     appearance        : none;
     width             : 270px;
     height            : 30px;
-    margin            : 10px;
+    /* margin            : 10px; */
     display           : flex;
     justify-content   : space-between;
     align-items       : center;
@@ -44,4 +44,42 @@ select {
     font-size     : 25px;
     color         : #1f1f44;
     font-weight   : bold;
+}
+
+.ingredientsInput {
+    width: 250px;
+    height: 60px;
+    border: none;
+    /* margin: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #0e1111 ;
+    font-size: 15px;
+    padding : 10px 10px;
+    display: block;
+}
+
+.instructionsInput {
+    width: 250px;
+    height: 60px;
+    border: none;
+    /* margin: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #0e1111 ;
+    font-size: 15px;
+    padding : 10px 10px;
+    display: block;
+    
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
 }

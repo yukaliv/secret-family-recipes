@@ -18,8 +18,7 @@ const AddInput = styled.input`
 width: 250px;
 height: 30px;
 border: none;
-// border-bottom: solid 1px #1f1f44;
-margin: 10px;
+/* margin: 10px; */
 display: flex;
 justify-content: center;
 align-items: center;
@@ -27,16 +26,18 @@ background-color: white;
 color: #0e1111 ;
 font-size: 15px;
 padding : 0 10px;
+display: block;
 `;
 
 const EachInput = styled.div`
 width: 430px;
 display: flex;
 justify-content: space-between;
-align-items: center;
+align-items: flex-start;
 font-weight: bold;
 font-family: 'Nunito', sans-serif;
 font-size: 15px;
+margin: 10px;
 `;
 
 const ButtonDiv = styled.div`
@@ -83,6 +84,10 @@ class AddRecipeForm extends React.Component {
         this.props.addRecipe(this.state)
         this.props.history.push("/recipes");
     }
+    cancelAdd = event => {
+        event.preventDefault();
+        this.props.history.push('/recipes');
+    };
 
     render() {
         return (
@@ -92,7 +97,8 @@ class AddRecipeForm extends React.Component {
                         <div className='recipeInput'>
                             <p className='title'>Share Your Favorite Recipe...</p>
                             <EachInput>
-                                <p>NAME :</p>
+                            <div className='items'> 
+                                <p>NAME :</p></div>
                                 <AddInput className='input'
                                     onChange={this.handleChange}
                                     placeholder='name'
@@ -102,14 +108,16 @@ class AddRecipeForm extends React.Component {
                             </EachInput>
 
                             <EachInput>
-                                <p>CATEGORY :</p>
+                            <div className='items'> 
+                                <p>CATEGORY :</p></div>
                                 <select onChange={this.handleChange} name='category_id'>
                                     {this.props.categories.map(category =>
                                         <option value={category.id}>{category.name}</option>)}
                                 </select>
                             </EachInput>
                             <EachInput>
-                                <p>SOURCE :</p>
+                                <div className='items'> 
+                                <p>SOURCE :</p></div>
                                 <AddInput className='input'
                                     onChange={this.handleChange}
                                     placeholder='source'
@@ -118,28 +126,30 @@ class AddRecipeForm extends React.Component {
                                 />
                             </EachInput>
                             <EachInput>
-                                <p>INGREDIENTS :</p>
-                                <AddInput className='input'
+                            <div className='items'> 
+                                <p>INGREDIENTS :</p></div>
+                                <textarea className='ingredientsInput'
                                     onChange={this.handleChange}
                                     placeholder='ingredients'
                                     value={this.state.ingredients}
                                     name='ingredients'
-                                />
+                                > </textarea>
                             </EachInput>
                             <EachInput>
-                                <p>INSTRUCTIONS :</p>
-                                <AddInput className='input'
+                            <div className='items'> 
+                                <p>INSTRUCTIONS :</p></div>
+                                <textarea className='instructionsInput'
                                     onChange={this.handleChange}
                                     placeholder='instructions'
                                     value={this.state.instructions}
                                     name='instructions'
-                                />
+                                ></textarea>
                             </EachInput>
                             <ButtonDiv>
                                 <Button className='button'
                                     type='submit'
                                     onClick={(event) => this.createRecipe(event)}> ADD YOUR RECIPE </Button>
-                                <Button>CANCEL</Button>
+                                <Button onClick={event => this.cancelAdd(event)}>CANCEL</Button>
                             </ButtonDiv>
                         </div>
                     </RecipeForm>

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Login from './Components/Login';
 import PrivateRoute from './Components/PrivateRoute';
 import { connect } from 'react-redux';
+import Signup from './Components/Signup';
 
 const AppDiv = styled.div`
 max-width: 1265px;
@@ -69,38 +70,51 @@ background-color: #6d748c;
 margin-top: 50px;
 `;
 
-function App(props) {
-  return (
-    <AppDiv>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-      <Header>
-        <Link to='/login' style={{ textDecoration: 'none' }}><NavP> SIGN UP / LOG IN </NavP></Link>
-      </Header>
+  logout = () => {
+    localStorage.removeItem("userToken");
+    window.location.href = "/login"
+  }
 
-      <MainContent>
-        <SubHeader>
-          <h1>Secret Family Recipes</h1>
-        </SubHeader>
+  render() {
+    return (
+      <AppDiv>
 
-        <MenuBar>
-          <Link to='/recipes' style={{ textDecoration: 'none' }}><MenuP>View Recipes</MenuP></Link>
-          <Link to='/addRecipe' style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
-        </MenuBar>
+        <Header>
+          <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
+          <Link to='/signup' style={{ textDecoration: 'none' }}><NavP> SIGN UP </NavP></Link>
+          <NavP onClick={event => this.logout()}> LOG OUT </NavP>
+        </Header>
 
-        <Route path='/login' component={Login} />
-        <PrivateRoute exact path='/recipes' component={RecipeList} />
-        <PrivateRoute path='/recipes/:id' component={RecipeDetails} />
-        <PrivateRoute path='/addRecipe' component={AddRecipeForm} />
-        <PrivateRoute path='/editRecipe/:id' component={EditRecipeForm} />
+        <MainContent>
+          <SubHeader>
+            <h1>Secret Family Recipes</h1>
+          </SubHeader>
 
-      </MainContent>
+          <MenuBar>
+            <Link to='/recipes' style={{ textDecoration: 'none' }}><MenuP>View Recipes</MenuP></Link>
+            <Link to='/addRecipe' style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
+          </MenuBar>
 
-      <Footer>
-        <p></p>
-      </Footer>
-    </AppDiv>
-  );
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <PrivateRoute exact path='/recipes' component={RecipeList} />
+          <PrivateRoute path='/recipes/:id' component={RecipeDetails} />
+          <PrivateRoute path='/addRecipe' component={AddRecipeForm} />
+          <PrivateRoute path='/editRecipe/:id' component={EditRecipeForm} />
 
+        </MainContent>
+
+        <Footer>
+          <p></p>
+        </Footer>
+      </AppDiv>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({

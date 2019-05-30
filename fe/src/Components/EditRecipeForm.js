@@ -29,7 +29,7 @@ const Input = styled.input`
   width: 250px;
   height: 30px;
   border: none;
-  margin: 10px;
+  /* margin: 10px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,10 +43,11 @@ const EachInput = styled.div`
   width: 430px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   font-weight: bold;
   font-family: 'Nunito', sans-serif;
 font-size: 15px;
+margin: 10px;
 `;
 
 const ButtonDiv = styled.div`
@@ -97,16 +98,32 @@ class EditRecipeForm extends React.Component {
         this.props.history.push(`/recipes/${this.props.match.params.id}`);
     };
 
+    cancelEdit = event => {
+        event.preventDefault();
+        this.props.history.push(`/recipes/${this.props.match.params.id}`);
+    };
+
+
     render() {
+        if (this.state.id !== this.props.recipe.id) {
+            this.setState({
+                id: this.props.recipe.id,
+                name: this.props.recipe.name,
+                source: this.props.recipe.source,
+                ingredients: this.props.recipe.ingredients,
+                instructions: this.props.recipe.instructions
+            })
+        }
 
         return (
             <div>
                 <div className="editImage">
                     <RecipeForm>
                         <EditInput>
-                            <p />
+                            <p className='title'>Make it even better</p>
                             <EachInput>
-                                <p>NAME :</p>
+                                <div className='items'>
+                                    <p>NAME :</p></div>
                                 <Input
                                     className="input"
                                     onChange={this.handleChange}
@@ -117,7 +134,8 @@ class EditRecipeForm extends React.Component {
                             </EachInput>
 
                             <EachInput>
-                                <p>SOURCE :</p>
+                                <div className='items'>
+                                    <p>SOURCE :</p></div>
                                 <Input
                                     className="input"
                                     onChange={this.handleChange}
@@ -128,25 +146,27 @@ class EditRecipeForm extends React.Component {
                             </EachInput>
 
                             <EachInput>
-                                <p>INGREDIENTS :</p>
-                                <Input
-                                    className="input"
+                                <div className='items'>
+                                    <p>INGREDIENTS :</p></div>
+                                <textarea className='ingredientsInput'
+
                                     onChange={this.handleChange}
                                     placeholder="ingredients"
                                     value={this.state.ingredients}
                                     name="ingredients"
-                                />
+                                ></textarea>
                             </EachInput>
 
                             <EachInput>
-                                <p>INSTRUCTIONS :</p>
-                                <Input
-                                    className="input"
+                                <div className='items'>
+                                    <p>INSTRUCTIONS :</p></div>
+                                <textarea className='instructionsInput'
+
                                     onChange={this.handleChange}
                                     placeholder="instructions"
                                     value={this.state.instructions}
                                     name="instructions"
-                                />
+                                ></textarea>
                             </EachInput>
                             <ButtonDiv>
                                 <Button
@@ -157,7 +177,7 @@ class EditRecipeForm extends React.Component {
                                     {" "}
                                     UPDATE RECIPE{" "}
                                 </Button>
-                                <Button>CANCEL</Button>
+                                <Button onClick={event => this.cancelEdit(event)}>CANCEL</Button>
                             </ButtonDiv>
                         </EditInput>
                     </RecipeForm>
@@ -167,9 +187,8 @@ class EditRecipeForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    recipe: state.recipe,
-    fetchingRecipe: state.fetchingRecipe
+const mapStateToProps = (state) => ({
+    recipe: state.recipe
 });
 
 export default connect(

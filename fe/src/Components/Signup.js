@@ -105,7 +105,7 @@ class Login extends React.Component {
                         onChange={this.handleChanges}
                     />
                     <LoginButton>
-                        <Link to="/recipes"><Button onClick={event=>this.loginUser(event)} >Login</Button></Link>
+                        <Button onClick={event=> this.registerUser(event)} >Sign Up</Button>
                     </LoginButton>
                 </LoginForm>
             </div>
