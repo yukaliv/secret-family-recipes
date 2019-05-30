@@ -14,23 +14,29 @@ width: 350px;
 height: 40px;
 border: none;
 border-bottom: 1px solid #1f1f44;
+font-size: 15px;
 `;
-
+   
 const Titleh2 = styled.h2`
 display: flex; 
 justify-content: center;
 align-items: center;
-border-top: solid 1px #1f1f44;
 padding: 25px;
 margin: 0;
 font-size: 28px;
+color: #1f1f44;
+border-top: solid 1px #1f1f44;
+padding: 45px 0;
 `;
+
+
 
 class SearchBar extends React.Component {
     render() {
         return (
             <div>
-                <Titleh2>Recipes</Titleh2>
+                <div>
+                 <Titleh2>Recipes</Titleh2></div>
             <InputDiv>
                 <Input className='searchBarInput'
                     placeholder="Search for Recipes..."

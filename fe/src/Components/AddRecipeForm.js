@@ -16,16 +16,17 @@ height: 750px;
 
 const AddInput = styled.input`
 width: 250px;
-height: 35px;
+height: 30px;
 border: none;
-border-bottom: solid 1px lightgrey;
+// border-bottom: solid 1px #1f1f44;
 margin: 10px;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: transparent;
+background-color: white;
 color: #0e1111 ;
-font-size: 10px;
+font-size: 15px;
+padding : 0 10px;
 `;
 
 const EachInput = styled.div`
@@ -34,20 +35,28 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 font-weight: bold;
+font-family: 'Nunito', sans-serif;
+font-size: 15px;
 `;
 
 const ButtonDiv = styled.div`
 display: flex;
-justify-content: space-around;
-margin: 30px;
+justify-content: space-between;
+margin: 20px 0 0 0;
 `;
-
 
 const Button = styled.button`
 margin: 20px;
-width: 150px;
+width: 160px;
 height: 40px;
-background: transparent;
+background: #6d748c;
+color: white;
+font-size: 15px;
+:hover {
+    background-color: white;
+    color: #6d748c;
+    border: 2px solid #6d748c;
+  }
 `;
 
 class AddRecipeForm extends React.Component {
@@ -81,7 +90,7 @@ class AddRecipeForm extends React.Component {
                 <div className='image'>
                     <RecipeForm>
                         <div className='recipeInput'>
-                            <p>Share Your Favorite Recipe...</p>
+                            <p className='title'>Share Your Favorite Recipe...</p>
                             <EachInput>
                                 <p>NAME :</p>
                                 <AddInput className='input'
@@ -94,18 +103,10 @@ class AddRecipeForm extends React.Component {
 
                             <EachInput>
                                 <p>CATEGORY :</p>
-                                {/* <Input className='input'
-                                onChange={this.handleChange}
-                                placeholder='category'
-                                value={this.state.category}
-                                name='category'
-                            /> */}
-
                                 <select onChange={this.handleChange} name='category'>
                                     {this.props.categories.map(category =>
                                         <option value={category.id}>{category.name}</option>)}
                                 </select>
-
                             </EachInput>
                             <EachInput>
                                 <p>SOURCE :</p>

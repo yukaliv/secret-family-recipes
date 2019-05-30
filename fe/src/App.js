@@ -50,50 +50,56 @@ padding: 0 25px;
 color: white;
 `;
 
-const MenuP=styled.p`
+const MenuP = styled.p`
 padding: 0 25px;
 color: #a00000;
 `;
 
-const MainContent=styled.div`
-width: 70%;
+const MainContent = styled.div`
+width: 85%;
 margin: 0 auto;
 `;
 
-const Footer=styled.footer`
+const Footer = styled.footer`
 height: 45px;
 width: 1265px;
 background-color: #6d748c;
-margin-top: 55px;
+margin-top: 50px;
 `;
+
+
 
 function App() {
   return (
     <AppDiv>
 
       <Header>
-        <Link to='/login'  style={{ textDecoration: 'none' }}><NavP> SIGN UP / LOG IN </NavP></Link>
+        <Link to='/login' style={{ textDecoration: 'none' }}><NavP> SIGN UP / LOG IN </NavP></Link>
       </Header>
-<MainContent>
-      <SubHeader>
-        <h1>Secret Family Recipes</h1>
-      </SubHeader>
 
-      <MenuBar>
-        <Link to='/recipes'  style={{ textDecoration: 'none' }}><MenuP>View Recipes</MenuP></Link>
-        <Link to='/addRecipe'  style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
-      </MenuBar>
-     
+      <MainContent>
+        <SubHeader>
+          <h1>Secret Family Recipes</h1>
+        </SubHeader>
+
+        <MenuBar>
+          <Link to='/recipes' style={{ textDecoration: 'none' }}><MenuP>View Recipes</MenuP></Link>
+          <Link to='/addRecipe' style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
+        </MenuBar>
+
+
+    
       <Route path='/login' component={Login} />
       <Route exact path='/recipes' component={RecipeList} />
       <Route path='/recipes/:id' component={RecipeDetails} />
       <Route path='/addRecipe' component={AddRecipeForm} />
       <Route path='/editRecipe/:id' component={EditRecipeForm} />
+
       </MainContent>
 
-  <Footer>
-    <p></p>
-  </Footer>
+      <Footer>
+        <p></p>
+      </Footer>
     </AppDiv>
   );
 
