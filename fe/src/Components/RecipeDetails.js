@@ -3,6 +3,7 @@ import { deleteRecipe, getRecipe } from '../Actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import "./RecipeDetails.css";
 
 
 const EachRecipe = styled.div` 
@@ -10,16 +11,61 @@ const EachRecipe = styled.div`
     flex-direction  : column;
     justify-content : center;
     align-items     : center;
-    width           : 350px;
-    height          : 350px;
-    margin          : 20px 20px;
+    width           : 700px;
+    height          : 450px;
+    margin          : 70px auto;
     line-height     : 25px;
-    border          : 1px solid lightgrey;
     border-radius   : 5px;
+    background-color: #e3e3e3;
+    opacity         : 0.9;
 `;
 
-const Name = styled.p`
-    font-size: 22px;
+const Title = styled.div`
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    width: 550px;
+    height: 130px;
+    border-radius   : 5px;
+    background-color: #e3e3e3;
+    opacity         : 0.9;
+    margin: 50px auto;
+    line-height: 25px;
+    `;
+
+const MiddleContent = styled.div`
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    width: 250px;
+    height: 100px;
+    
+
+`;
+const BottomContent = styled.div`
+    display         : flex;
+    justify-content : space-around;
+    align-items     : center;
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Button = styled.button`
+width: 150px;
+height: 40px;
+background: #6d748c;
+color: white;
+font-size: 15px;
+margin: 0 70px;
+:hover {
+    background-color: white;
+    color: #6d748c;
+    border: 2px solid #6d748c;
+  }
 `;
 
 class Recipe extends React.Component {
@@ -35,19 +81,44 @@ class Recipe extends React.Component {
 
 
     render() {
-       
-        return (
-            <div>
-                <EachRecipe>
-                    <Name><strong>{this.props.recipe.name}</strong></Name>
-                    <p> {this.props.recipe.category}</p>
-                    <p>BY: {this.props.recipe.source}</p>
-                    <p>INGREDIENTS: <strong>{this.props.recipe.ingredients}</strong></p>
-                    <p>INSTRUCTIONS: <strong>{this.props.recipe.instructions}</strong></p>
 
-                    <Link to={`/editRecipe/${this.props.recipe.id}`}> <button className='editRecipe'>Edit Recipe</button></Link>
-                    <button className='deleteRecipe' onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </button>
-                </EachRecipe>
+        return (
+            <div classname='recipe'>
+                <div className="eachRecipeImage">
+                    <Title>
+                        <h2>~ {this.props.recipe.name} ~</h2>
+                        <h3> {this.props.recipe.category}</h3>
+                        <p>By {this.props.recipe.source}</p>
+                    </Title>
+                    <EachRecipe>
+
+                        <div className='instructions'>
+
+                            <MiddleContent>
+                                <div className='middleContent'>
+                                    <h4>INGREDIENTS </h4>
+                                </div>
+                                <div className='middleContent'>
+                                    <h4>INSTRUCTIONS </h4>  </div>
+                            </MiddleContent>
+
+                            <BottomContent>
+                                <div className='bottomContent'>
+                                    <h5>{this.props.recipe.ingredients}</h5>
+                                </div>
+                                <div className='bottomContent'>
+                                    <h5>{this.props.recipe.instructions}</h5>  </div></BottomContent>
+                        </div>
+
+                        <ButtonDiv>
+                            <div>
+                            <Link to={`/editRecipe/${this.props.recipe.id}`}> <Button >Edit Recipe</Button></Link></div>
+                            <div>
+                            <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </Button></div>
+                        </ButtonDiv>
+
+                    </EachRecipe>
+                </div>
             </div>
         )
     }
