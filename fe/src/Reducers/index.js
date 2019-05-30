@@ -76,6 +76,7 @@ function reducer(state = initialState, action) {
                 fetchingRecipe: true
             }
         case GET_RECIPE_SUCCESS:
+            console.log("get recipe success reducer action payload: ", action.payload);
             return {
                 ...state,
                 fetchingRecipe: false,
@@ -93,7 +94,6 @@ function reducer(state = initialState, action) {
                 deletingRecipe: true
             }
         case DELETE_RECIPE_SUCCESS:
-
             return {
                 ...state,
                 deletingRecipe: false
@@ -105,23 +105,16 @@ function reducer(state = initialState, action) {
                 error: action.payload
             }
         case ADD_RECIPE_SUCCESS:
-            console.log("add recipe success", action.payload)
             return {
                 ...state,
-                // recipes: [
-                //     ...state.recipes,
-                //     action.payload
-                // ],
                 addingRecipe: true
             }
         case ADD_RECIPE_START:
-            console.log("add recipe start", action.payload)
             return {
                 ...state,
                 addingRecipe: true
             }
         case ADD_RECIPE_FAILURE:
-            console.log("add recipe failure", action.payload)
             return {
                 ...state,
                 addingRecipe: false,
@@ -139,7 +132,6 @@ function reducer(state = initialState, action) {
 
             }
         case REGISTER_USER_SUCCESS:
-            console.log('hi i am in reducer', action.payload)
             localStorage.setItem("userToken", action.payload.token);
             return {
                 ...state,
@@ -189,8 +181,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 loggingIn: true
             }
-        case LOGIN_USER_SUCCESS:
-            //todo: use actual token from API once it's available    
+        case LOGIN_USER_SUCCESS: 
             localStorage.setItem("userToken", action.payload.token);
             return {
                 ...state,
@@ -210,22 +201,3 @@ function reducer(state = initialState, action) {
 }
 
 export default reducer;
-
-
-
-
-
-
-
- // case DELETE_RECIPE:
-        //     // TODO(yuka) remove this once backend is ready
-
-        //     console.log("this is recipe.id: ", typeof state.recipes[0].id);
-        //     console.log("this is action.payload: ", typeof action.payload);
-        //     let recipesWithoutDeletedRecipes = state.recipes.filter(recipe => recipe.id !== action.payload);
-        //     let filteredRecipesWithoutDeletedRecipes = state.filteredRecipes.filter(recipe => recipe.id !== action.payload);
-        //     return {
-        //         ...state,
-        //         recipes: recipesWithoutDeletedRecipes,
-        //         filteredRecipes: filteredRecipesWithoutDeletedRecipes
-        //     }

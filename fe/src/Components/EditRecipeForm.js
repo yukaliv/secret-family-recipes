@@ -97,7 +97,22 @@ class EditRecipeForm extends React.Component {
         this.props.history.push(`/recipes/${this.props.match.params.id}`);
     };
 
+    cancelEdit = event => {
+        event.preventDefault();
+        this.props.history.push(`/recipes/${this.props.match.params.id}`);
+    };
+
+
     render() {
+        if (this.state.id !== this.props.recipe.id) {
+            this.setState({
+                id: this.props.recipe.id,
+                name: this.props.recipe.name,
+                source: this.props.recipe.source,
+                ingredients: this.props.recipe.ingredients,
+                instructions: this.props.recipe.instructions
+            })
+        }
 
         return (
             <div>
@@ -157,7 +172,7 @@ class EditRecipeForm extends React.Component {
                                     {" "}
                                     UPDATE RECIPE{" "}
                                 </Button>
-                                <Button>CANCEL</Button>
+                                <Button onClick={event => this.cancelEdit(event)}>CANCEL</Button>
                             </ButtonDiv>
                         </EditInput>
                     </RecipeForm>
@@ -167,9 +182,8 @@ class EditRecipeForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    recipe: state.recipe,
-    fetchingRecipe: state.fetchingRecipe
+const mapStateToProps = (state) => ({
+    recipe: state.recipe
 });
 
 export default connect(

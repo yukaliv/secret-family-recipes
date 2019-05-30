@@ -69,7 +69,6 @@ margin: 0 70px;
 `;
 
 class Recipe extends React.Component {
-
     deleteRecipe = event => {
         this.props.deleteRecipe(parseInt(this.props.match.params.id));
         this.props.history.push("/recipes");
@@ -79,6 +78,9 @@ class Recipe extends React.Component {
         this.props.getRecipe(this.props.match.params.id);
     }
 
+    componentDidUpdate() {
+        this.props.getRecipe(this.props.match.params.id);
+    }
 
     render() {
 
@@ -116,7 +118,6 @@ class Recipe extends React.Component {
                             <div>
                             <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </Button></div>
                         </ButtonDiv>
-
                     </EachRecipe>
                 </div>
             </div>
@@ -128,6 +129,4 @@ const mapStateToProps = (state) => ({
     recipe: state.recipe
 })
 
-export default connect(
-    mapStateToProps, { deleteRecipe, getRecipe })(
-        Recipe);
+export default connect(mapStateToProps, { deleteRecipe, getRecipe })(Recipe);

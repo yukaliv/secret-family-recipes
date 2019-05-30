@@ -92,10 +92,7 @@ export const editRecipe = (updatedRecipe) => dispatch => {
         type: EDIT_RECIPE_SUCCESS
     })
     let id = updatedRecipe.id;
-    console.log("this is the ID editRecipe: ", id);
-    console.log("this is the ID editRecipe: ", updatedRecipe);
     delete updatedRecipe.id;
-    console.log("this is the ID editRecipe: ", updatedRecipe);
     return axios
         .put(baseEndpoint + 'recipes/' + id, updatedRecipe)
         .then(res => {
@@ -118,6 +115,7 @@ export const getRecipe = (id) => dispatch => {
     return axios
         .get(baseEndpoint + 'recipes/' + id)
         .then(res => {
+            console.log("successful get recipe response in ac:", res.data);
             dispatch({
                 type: GET_RECIPE_SUCCESS, payload: res.data
             })
