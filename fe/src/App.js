@@ -7,6 +7,8 @@ import { Route, Link } from 'react-router-dom';
 import EditRecipeForm from './Components/EditRecipeForm';
 import styled from 'styled-components';
 import Login from './Components/Login';
+import PrivateRoute from './Components/PrivateRoute';
+import { connect } from 'react-redux';
 
 const AppDiv = styled.div`
 max-width: 1265px;
@@ -67,9 +69,7 @@ background-color: #6d748c;
 margin-top: 50px;
 `;
 
-
-
-function App() {
+function App(props) {
   return (
     <AppDiv>
 
@@ -87,13 +87,11 @@ function App() {
           <Link to='/addRecipe' style={{ textDecoration: 'none' }}><MenuP>Add Recipe</MenuP></Link>
         </MenuBar>
 
-
-    
-      <Route path='/login' component={Login} />
-      <Route exact path='/recipes' component={RecipeList} />
-      <Route path='/recipes/:id' component={RecipeDetails} />
-      <Route path='/addRecipe' component={AddRecipeForm} />
-      <Route path='/editRecipe/:id' component={EditRecipeForm} />
+        <Route path='/login' component={Login} />
+        <PrivateRoute exact path='/recipes' component={RecipeList} />
+        <PrivateRoute path='/recipes/:id' component={RecipeDetails} />
+        <PrivateRoute path='/addRecipe' component={AddRecipeForm} />
+        <PrivateRoute path='/editRecipe/:id' component={EditRecipeForm} />
 
       </MainContent>
 
@@ -105,4 +103,8 @@ function App() {
 
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  token: state.token
+})
+
+export default connect(mapStateToProps, {})(App);

@@ -59,7 +59,8 @@ class RecipeList extends React.Component {
 
 const mapStateToProps = (state) => ({
     recipes: state.recipes,
-    filteredRecipes: state.filteredRecipes
+    filteredRecipes: state.filteredRecipes,
+    token: state.token
 })
 
 export default connect(

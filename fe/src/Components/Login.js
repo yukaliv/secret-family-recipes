@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { login } from '../actions';
+import { connect } from 'react-redux';
+import { registerUser, loginUser } from '../Actions';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -52,7 +52,6 @@ margin: 20px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
 `;
 
 class Login extends React.Component {
@@ -62,6 +61,7 @@ class Login extends React.Component {
             password: ''
         }
     }
+
     handleChanges = e => {
         this.setState({
             credentials: {
@@ -71,12 +71,21 @@ class Login extends React.Component {
         });
     };
 
-    // login = e => {
-    //     e.preventDefault();
-    //     this.props.login(this.state.credentials);
-    // };
+    registerUser = e => {
+        e.preventDefault();
+        this.props.registerUser(this.state.credentials);
+    };
+
+    loginUser = e => {
+        e.preventDefault();
+        this.props.loginUser(this.state.credentials);
+    }
 
     render() {
+        if (localStorage.getItem("userToken")) {
+            this.props.history.push("/recipes");
+        }
+
         return (
             <div>
                 <LoginForm>
@@ -96,33 +105,19 @@ class Login extends React.Component {
                         onChange={this.handleChanges}
                     />
                     <LoginButton>
-                        <Link to="/recipes"><Button >Login</Button></Link>
-                        <Link to="/recipes"><Button >Sign Up</Button></Link>
+                        <Link to="/recipes"><Button onClick={event=>this.loginUser(event)} >Login</Button></Link>
+                        <Button onClick={event=> this.registerUser(event)} >Sign Up</Button>
                     </LoginButton>
                 </LoginForm>
-
-                {/* <LoginForm>
-                    <h1>Sign Up</h1>
-                    <Input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={this.state.credentials.username}
-                        onChange={this.handleChanges}
-                    />
-                    <Input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.credentials.password}
-                        onChange={this.handleChanges}
-                    />
-
-                    <Link to="/recipes"><Button >Sign Up</Button></Link>
-                </LoginForm> */}
             </div>
         )
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.isLoggedIn
+})
+
+export default connect(
+    mapStateToProps,  {registerUser, loginUser}
+)(Login);

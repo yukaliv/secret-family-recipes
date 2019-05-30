@@ -62,7 +62,7 @@ font-size: 15px;
 class AddRecipeForm extends React.Component {
     state = {
         name: '',
-        category: '',
+        category_id: '1', // Default to "entree"
         source: '',
         ingredients: '',
         instructions: ''
@@ -103,7 +103,7 @@ class AddRecipeForm extends React.Component {
 
                             <EachInput>
                                 <p>CATEGORY :</p>
-                                <select onChange={this.handleChange} name='category'>
+                                <select onChange={this.handleChange} name='category_id'>
                                     {this.props.categories.map(category =>
                                         <option value={category.id}>{category.name}</option>)}
                                 </select>

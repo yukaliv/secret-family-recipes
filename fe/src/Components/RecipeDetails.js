@@ -1,11 +1,11 @@
 import React from 'react';
-import { deleteRecipe } from '../Actions';
+import { deleteRecipe, getRecipe } from '../Actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-const EachRecipe=styled.div` 
+const EachRecipe = styled.div` 
     display         : flex;
     flex-direction  : column;
     justify-content : center;
@@ -18,6 +18,10 @@ const EachRecipe=styled.div`
     border-radius   : 5px;
 `;
 
+const Name = styled.p`
+    font-size: 22px;
+`;
+
 class Recipe extends React.Component {
 
     deleteRecipe = event => {
@@ -25,27 +29,34 @@ class Recipe extends React.Component {
         this.props.history.push("/recipes");
     }
 
+    componentDidMount() {
+        this.props.getRecipe(this.props.match.params.id);
+    }
+
+
     render() {
-        let id = this.props.match.params.id;
-        let recipe = this.props.recipes.find(recipe => recipe.id === parseInt(id));
+       
         return (
-            <EachRecipe>
-                <p>NAME:<strong>{recipe.name}</strong></p>
-                <p>CATEGORY: <strong>{recipe.category}</strong></p>
-                <p>SOURCE: <strong>{recipe.source}</strong></p>
-                <p>INGREDIENTS: <strong>{recipe.ingredients}</strong></p>
-                <p>INSTRUCTIONS: <strong>{recipe.instructions}</strong></p>
-                <Link to={`/editRecipe/${recipe.id}`}> <button className='editRecipe'>Edit Recipe</button></Link>
-                <button className='deleteRecipe' onClick={(event) => this.deleteRecipe(recipe.id)}> Delete Recipe </button>
-            </EachRecipe>
+            <div>
+                <EachRecipe>
+                    <Name><strong>{this.props.recipe.name}</strong></Name>
+                    <p> {this.props.recipe.category}</p>
+                    <p>BY: {this.props.recipe.source}</p>
+                    <p>INGREDIENTS: <strong>{this.props.recipe.ingredients}</strong></p>
+                    <p>INSTRUCTIONS: <strong>{this.props.recipe.instructions}</strong></p>
+
+                    <Link to={`/editRecipe/${this.props.recipe.id}`}> <button className='editRecipe'>Edit Recipe</button></Link>
+                    <button className='deleteRecipe' onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </button>
+                </EachRecipe>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    recipes: state.recipes
+    recipe: state.recipe
 })
 
 export default connect(
-    mapStateToProps, { deleteRecipe })(
+    mapStateToProps, { deleteRecipe, getRecipe })(
         Recipe);
