@@ -6,6 +6,10 @@
     opacity         : 0.8;
     margin-top      : 50px;
 }
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
 
 .recipeInput {
     display         : flex;
