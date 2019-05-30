@@ -5,62 +5,60 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import "./RecipeDetails.css";
 
-
-const EachRecipe = styled.div` 
-    display         : flex;
-    flex-direction  : column;
-    justify-content : center;
-    align-items     : center;
-    width           : 700px;
-    height          : 450px;
-    margin          : 70px auto;
-    line-height     : 25px;
-    border-radius   : 5px;
-    background-color: #e3e3e3;
-    opacity         : 0.9;
-`;
-
 const Title = styled.div`
     display         : flex;
     flex-direction  : column;
     justify-content : center;
     align-items     : center;
-    width: 550px;
-    height: 130px;
+    width: 450px;
+    height: 190px;
     border-radius   : 5px;
     background-color: #e3e3e3;
     opacity         : 0.9;
-    margin: 50px auto;
+    margin: 30px auto;
     line-height: 25px;
+    padding: 15px;
+    @media (max-width: 500px) {
+      width: 350px;
+    }
     `;
+
 
 const MiddleContent = styled.div`
     display         : flex;
-    justify-content : center;
+    flex-direction: column;
+    justify-content : flex-start;
     align-items     : center;
-    width: 250px;
-    height: 100px;
-    
-
-`;
-const BottomContent = styled.div`
-    display         : flex;
-    justify-content : space-around;
-    align-items     : center;
+    align-content: space-between;
+    width: 400px;
+    height: 450px;
+    border-radius   : 5px;
+    background-color: #e3e3e3;
+    opacity         : 0.9;
+    margin: 20px;
+    @media (max-width: 500px) {
+      width: 300px;
+    }
 `;
 
 const ButtonDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  border-radius   : 5px;
+  align-items: center;
+    background-color: #e3e3e3;
+    opacity         : 0.9;
+    margin: 10px auto;
+    height: 50px;
 `;
 
 const Button = styled.button`
-width: 150px;
+width: 130px;
 height: 40px;
 background: #6d748c;
 color: white;
 font-size: 15px;
-margin: 0 70px;
+margin: 0 10px ;
 :hover {
     background-color: white;
     color: #6d748c;
@@ -91,34 +89,36 @@ class Recipe extends React.Component {
                         <h2>~ {this.props.recipe.name} ~</h2>
                         <h3> {this.props.recipe.category}</h3>
                         <p>By {this.props.recipe.source}</p>
-                    </Title>
-                    <EachRecipe>
-
-                        <div className='instructions'>
-
-                            <MiddleContent>
-                                <div className='middleContent'>
-                                    <h4>INGREDIENTS </h4>
-                                </div>
-                                <div className='middleContent'>
-                                    <h4>INSTRUCTIONS </h4>  </div>
-                            </MiddleContent>
-
-                            <BottomContent>
-                                <div className='bottomContent'>
-                                    <h5>{this.props.recipe.ingredients}</h5>
-                                </div>
-                                <div className='bottomContent'>
-                                    <h5>{this.props.recipe.instructions}</h5>  </div></BottomContent>
-                        </div>
-
                         <ButtonDiv>
-                            <div>
+                        <div>
                             <Link to={`/editRecipe/${this.props.recipe.id}`}> <Button >Edit Recipe</Button></Link></div>
-                            <div>
+                        <div>
                             <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </Button></div>
-                        </ButtonDiv>
-                    </EachRecipe>
+                    </ButtonDiv>
+                    </Title>
+
+                    <div className='instructions'>
+
+                        <MiddleContent>
+                            <div className='title'>
+                                <h4>INGREDIENTS </h4>
+                            </div>
+                            <div className='content'>
+                                <h5>{this.props.recipe.ingredients}</h5>
+                            </div>
+                        </MiddleContent>
+
+                        <MiddleContent>
+                            <div className='title'>
+                                <h4>INSTRUCTIONS </h4>  </div>
+                            <div className='content'>
+                                <h5>{this.props.recipe.instructions}</h5>  </div>
+                        </MiddleContent>
+
+                    </div>
+
+                   
+
                 </div>
             </div>
         )

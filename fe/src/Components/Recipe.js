@@ -16,8 +16,9 @@ const EachRecipe = styled.div`
     line-height     : 25px;
     border          : 2px dotted #6d748c;
     border-radius   : 10px;
-    // background-color: #e3e3e3;
-    // opacity: 0.8;
+    @media (max-width: 500px) {
+height: 280px;
+    }
 `;
 
 const Title = styled.p`
@@ -58,7 +59,7 @@ font-size: 15px;
 class Recipe extends React.Component {
     render() {
         return (
-            
+
             <EachRecipe>
                 <Title> <strong>~ {this.props.recipe.name} ~</strong></Title>
                 <Category>{this.props.recipe.category}</Category>

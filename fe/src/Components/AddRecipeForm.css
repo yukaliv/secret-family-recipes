@@ -16,7 +16,13 @@
     height          : 600px;
     background-color: #e3e3e3;
     opacity         : 0.9;
-
+}
+@media (max-width: 800px) {
+    .recipeInput{
+  width: 650px;
+  height: 750px;
+}
+    
 }
 
 select {
@@ -82,4 +88,9 @@ select {
     justify-content: center;
     align-items: center;
     padding-top: 5px;
+}
+@media (max-width: 500px) {
+    .items{
+  padding: 10px;
+}
 }

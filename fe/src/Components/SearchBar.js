@@ -15,6 +15,10 @@ height: 40px;
 border: none;
 border-bottom: 1px solid #1f1f44;
 font-size: 15px;
+@media (max-width: 500px) {
+text-align: center;
+width: 300px;
+}
 `;
    
 const Titleh2 = styled.h2`

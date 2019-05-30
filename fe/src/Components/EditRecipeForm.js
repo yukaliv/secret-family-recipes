@@ -120,7 +120,7 @@ class EditRecipeForm extends React.Component {
                 <div className="editImage">
                     <RecipeForm>
                         <EditInput>
-                            <p className='title'>Make it even better</p>
+                            <p className='title'>Make it even better...</p>
                             <EachInput>
                                 <div className='items'>
                                     <p>NAME :</p></div>
