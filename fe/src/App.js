@@ -11,10 +11,20 @@ import PrivateRoute from './Components/PrivateRoute';
 import { connect } from 'react-redux';
 import Signup from './Components/Signup';
 
+// @tablet: (max-width: 800px)
+// @phone: (max-width: 500px)
+// @small-desktop: (max-width: 1265px)
+
 const AppDiv = styled.div`
-max-width: 1265px;
+max-width: 1260px;
 margin: 0 auto;
 font-family:  'Cherry Swash', cursive;
+@media (max-width: 1265px) {
+  width: 100%;
+}
+@media (max-width: 800px) {
+  width: 100%;
+}
 `;
 
 const Header = styled.header`
@@ -22,11 +32,18 @@ display: flex;
 justify-content: flex-end;
 align-items: center;
 height: 45px;
-width: 1230px;
-padding: 0 20px;
+width: 1265px;
 font-family: 'Mitr', sans-serif;
 background-color:#6d748c;
 color:black;
+@media (max-width: 1265px) {
+  width: 100%;
+}
+@media (max-width: 800px) {
+  width: 100%;
+  justify-content: center;
+}
+
 `;
 
 const SubHeader = styled.header`
@@ -36,6 +53,12 @@ align-items: center;
 font-size: 25px;
 margin: 20px;
 color:#1f1f44;
+@media (max-width: 800px) {
+  font-size: 20px;
+}
+@media (max-width: 500px) {
+  font-size: 15px;
+}
 `;
 
 const MenuBar = styled.div`
@@ -51,16 +74,33 @@ border-bottom: solid 1px #1f1f44;
 const NavP = styled.p`
 padding: 0 25px;
 color: white;
+@media (max-width: 500px) {
+  font-size: 15px;
+}
 `;
 
 const MenuP = styled.p`
 padding: 0 25px;
 color: #a00000;
+@media (max-width: 500px) {
+  font-size: 15px;
+}
 `;
 
 const MainContent = styled.div`
 width: 85%;
 margin: 0 auto;
+
+@media (max-width: 1265px) {
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
 `;
 
 const Footer = styled.footer`
@@ -68,6 +108,13 @@ height: 45px;
 width: 1265px;
 background-color: #6d748c;
 margin-top: 50px;
+@media (max-width: 1265px) {
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 800px) {
+  width: 100%;
+}
 `;
 
 class App extends React.Component {

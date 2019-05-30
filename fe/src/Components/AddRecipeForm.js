@@ -12,13 +12,13 @@ justify-content: center;
 align-items: center;
 margin: 30px;
 height: 750px;
+
 `;
 
 const AddInput = styled.input`
 width: 250px;
 height: 30px;
 border: none;
-/* margin: 10px; */
 display: flex;
 justify-content: center;
 align-items: center;
@@ -38,6 +38,11 @@ font-weight: bold;
 font-family: 'Nunito', sans-serif;
 font-size: 15px;
 margin: 10px;
+
+@media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+    }
 `;
 
 const ButtonDiv = styled.div`

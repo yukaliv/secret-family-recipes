@@ -23,6 +23,14 @@ const EditInput = styled.div`
   height: 600px;
   background-color: #e3e3e3;
   opacity: 0.9;
+  @media (max-width: 800px) {
+  width: 500px;
+  height: 650px;
+  }
+  @media (max-width: 500px) {
+  width: 400px;
+  height: 650px;
+}
 `;
 
 const Input = styled.input`
@@ -48,6 +56,10 @@ const EachInput = styled.div`
   font-family: 'Nunito', sans-serif;
 font-size: 15px;
 margin: 10px;
+@media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+    }
 `;
 
 const ButtonDiv = styled.div`
@@ -120,7 +132,7 @@ class EditRecipeForm extends React.Component {
                 <div className="editImage">
                     <RecipeForm>
                         <EditInput>
-                            <p className='title'>Make it even better</p>
+                            <p className='title'>Make it even better...</p>
                             <EachInput>
                                 <div className='items'>
                                     <p>NAME :</p></div>
