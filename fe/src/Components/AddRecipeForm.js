@@ -19,7 +19,6 @@ const AddInput = styled.input`
 width: 250px;
 height: 30px;
 border: none;
-/* margin: 10px; */
 display: flex;
 justify-content: center;
 align-items: center;

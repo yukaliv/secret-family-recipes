@@ -21,9 +21,15 @@
     .recipeInput{
   width: 650px;
   height: 750px;
+    }
 }
-    
+@media (max-width: 500px) {
+    .recipeInput{
+    width: 400px;
+    height: 750px;
+    }
 }
+
 
 select {
     -webkit-appearance: none;

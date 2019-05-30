@@ -19,6 +19,9 @@ const AppDiv = styled.div`
 max-width: 1260px;
 margin: 0 auto;
 font-family:  'Cherry Swash', cursive;
+@media (max-width: 1265px) {
+  width: 100%;
+}
 @media (max-width: 800px) {
   width: 100%;
 }
@@ -33,6 +36,9 @@ width: 1265px;
 font-family: 'Mitr', sans-serif;
 background-color:#6d748c;
 color:black;
+@media (max-width: 1265px) {
+  width: 100%;
+}
 @media (max-width: 800px) {
   width: 100%;
   justify-content: center;
@@ -84,6 +90,12 @@ color: #a00000;
 const MainContent = styled.div`
 width: 85%;
 margin: 0 auto;
+
+@media (max-width: 1265px) {
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
 @media (max-width: 800px) {
   justify-content: center;
   width: 100%;
@@ -96,6 +108,10 @@ height: 45px;
 width: 1265px;
 background-color: #6d748c;
 margin-top: 50px;
+@media (max-width: 1265px) {
+  width: 100%;
+  justify-content: center;
+}
 @media (max-width: 800px) {
   width: 100%;
 }
