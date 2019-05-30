@@ -1,11 +1,9 @@
 .editImage {
     background-image: url('./Image/apple.jpg');
     background-size : cover;
-    /* width        : 160px;
-    height          : 160px;
-    border          : 2px solid;
-    color           : pink; */
+    margin-top      : 50px;
     resize          : both;
     overflow        : scroll;
-    opacity         : 0.6;
+    opacity         : 0.8;
 }
+

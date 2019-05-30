@@ -8,18 +8,17 @@ import './RecipeList.css';
 
 const RecipeLists = styled.div`
     display        : flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap      : wrap;
+    `;
 
-`;
-
-const Quote = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 400px;
-`;
-
+    const Quote = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    `;
+ 
 
 class RecipeList extends React.Component {
     constructor(props) {
@@ -42,11 +41,12 @@ class RecipeList extends React.Component {
         }
         return (
             <div>
-                <div className='main-image'>
-                    <Quote>
-                        <p></p>
-                    </Quote>
-                </div>
+               
+        <div className='main-image'>
+          <Quote>
+            <p></p>
+          </Quote>
+        </div>
                 <SearchBar />
                 <RecipeLists>
                     {recipesToDisplay.map(recipe => <Recipe recipe={recipe} />)}

@@ -30,14 +30,21 @@ padding: 20px;
 
 const Button = styled.button`
 width: 260px;
-height: 30px;
-margin: 10px 0;
+height: 35px;
+margin: 5px 0;
 font-size: 15px;
-border-radius: 5px;
-background-color: transparent;
-color: black;
 font-weight: bold;
 font-family: 'Nunito', sans-serif;
+background: #6d748c;
+color: white;
+font-size: 15px;
+
+:hover {
+    background-color: white;
+    color: #6d748c;
+    border: 2px solid #6d748c;
+  
+  }
 `;
 
 const LoginButton = styled.div`
@@ -45,6 +52,7 @@ margin: 20px;
 display: flex;
 flex-direction: column;
 justify-content: center;
+
 `;
 
 class Login extends React.Component {

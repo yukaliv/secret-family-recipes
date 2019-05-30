@@ -10,6 +10,8 @@ const RecipeForm = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 30px;
+height: 750px;
 `;
 
 const EditInput = styled.div`
@@ -25,13 +27,16 @@ const EditInput = styled.div`
 
 const Input = styled.input`
   width: 250px;
-  height: 35px;
+  height: 30px;
   border: none;
-  border-bottom: solid 1px lightgrey;
   margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+color: #0e1111 ;
+font-size: 15px;
+padding : 0 10px;
 `;
 
 const EachInput = styled.div`
@@ -40,144 +45,153 @@ const EachInput = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+font-size: 15px;
 `;
 
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 30px;
+  margin: 20px 0 0 0;
 `;
 
 const Button = styled.button`
-  margin: 0 10px;
+margin: 20px;
   width: 150px;
   height: 40px;
-  background: transparent;
+  background: #6d748c;
+color: white;
+font-size: 15px;
+:hover {
+    background-color: white;
+    color: #6d748c;
+    border: 2px solid #6d748c;
+  }
 `;
 
 class EditRecipeForm extends React.Component {
-  state = {
-    id: "",
-    name: "",
-    category: "",
-    source: "",
-    ingredients: "",
-    instructions: ""
-  };
+    state = {
+        id: "",
+        name: "",
+        category: "",
+        source: "",
+        ingredients: "",
+        instructions: ""
+    };
 
-  componentDidMount() {
-    let id = parseInt(this.props.match.params.id);
-    let currentRecipe = this.props.recipes.find(recipe => recipe.id === id);
-    console.log(this.props.recipes, "hi");
-    console.log(id, "hi");
-    this.setState({
-      id: id,
-      name: currentRecipe.name,
-      category: currentRecipe.category,
-      source: currentRecipe.source,
-      ingredients: currentRecipe.ingredients,
-      instructions: currentRecipe.instructions
-    });
-  }
+    componentDidMount() {
+        let id = parseInt(this.props.match.params.id);
+        let currentRecipe = this.props.recipes.find(recipe => recipe.id === id);
+        console.log(this.props.recipes, "hi");
+        console.log(id, "hi");
+        this.setState({
+            id: id,
+            name: currentRecipe.name,
+            category: currentRecipe.category,
+            source: currentRecipe.source,
+            ingredients: currentRecipe.ingredients,
+            instructions: currentRecipe.instructions
+        });
+    }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
 
-  editRecipe = event => {
-    event.preventDefault();
-    this.props.editRecipe(this.state);
-    this.props.history.push(`/recipes/${this.props.match.params.id}`);
-  };
+    editRecipe = event => {
+        event.preventDefault();
+        this.props.editRecipe(this.state);
+        this.props.history.push(`/recipes/${this.props.match.params.id}`);
+    };
 
-  render() {
-    return (
-      <div>
-        <div className="editImage">
-          <RecipeForm>
-            <EditInput>
-              <p />
-              <EachInput>
-                <p>NAME</p>
-                <Input
-                  className="input"
-                  onChange={this.handleChange}
-                  placeholder="name"
-                  value={this.state.name}
-                  name="name"
-                />
-              </EachInput>
+    render() {
+        return (
+            <div>
+                <div className="editImage">
+                    <RecipeForm>
+                        <EditInput>
+                            <p />
+                            <EachInput>
+                                <p>NAME :</p>
+                                <Input
+                                    className="input"
+                                    onChange={this.handleChange}
+                                    placeholder="name"
+                                    value={this.state.name}
+                                    name="name"
+                                />
+                            </EachInput>
 
-              <EachInput>
-                <p>CATEGORY</p>
-                <Input
-                  className="input"
-                  onChange={this.handleChange}
-                  placeholder="category"
-                  value={this.state.category}
-                  name="category"
-                />
-              </EachInput>
+                            <EachInput>
+                                <p>CATEGORY :</p>
+                                <Input
+                                    className="input"
+                                    onChange={this.handleChange}
+                                    placeholder="category"
+                                    value={this.state.category}
+                                    name="category"
+                                />
+                            </EachInput>
 
-              <EachInput>
-                <p>SOURCE</p>
-                <Input
-                  className="input"
-                  onChange={this.handleChange}
-                  placeholder="source"
-                  value={this.state.source}
-                  name="source"
-                />
-              </EachInput>
+                            <EachInput>
+                                <p>SOURCE :</p>
+                                <Input
+                                    className="input"
+                                    onChange={this.handleChange}
+                                    placeholder="source"
+                                    value={this.state.source}
+                                    name="source"
+                                />
+                            </EachInput>
 
-              <EachInput>
-                <p>INGREDIENTS</p>
-                <Input
-                  className="input"
-                  onChange={this.handleChange}
-                  placeholder="ingredients"
-                  value={this.state.ingredients}
-                  name="ingredients"
-                />
-              </EachInput>
+                            <EachInput>
+                                <p>INGREDIENTS :</p>
+                                <Input
+                                    className="input"
+                                    onChange={this.handleChange}
+                                    placeholder="ingredients"
+                                    value={this.state.ingredients}
+                                    name="ingredients"
+                                />
+                            </EachInput>
 
-              <EachInput>
-                <p>DIRECTIONS</p>
-                <Input
-                  className="input"
-                  onChange={this.handleChange}
-                  placeholder="directions"
-                  value={this.state.directions}
-                  name="instructions"
-                />
-              </EachInput>
-              <ButtonDiv>
-                <Button
-                  className="button"
-                  type="submit"
-                  onClick={event => this.editRecipe(event)}
-                >
-                  {" "}
-                  UPDATE YOUR RECIPE{" "}
-                </Button>
-                <Button>CANCEL</Button>
-              </ButtonDiv>
-            </EditInput>
-          </RecipeForm>
-        </div>
-      </div>
-    );
-  }
+                            <EachInput>
+                                <p>INSTRUCTIONS :</p>
+                                <Input
+                                    className="input"
+                                    onChange={this.handleChange}
+                                    placeholder="instructions"
+                                    value={this.state.instructions}
+                                    name="instructions"
+                                />
+                            </EachInput>
+                            <ButtonDiv>
+                                <Button
+                                    className="button"
+                                    type="submit"
+                                    onClick={event => this.editRecipe(event)}
+                                >
+                                    {" "}
+                                    UPDATE RECIPE{" "}
+                                </Button>
+                                <Button>CANCEL</Button>
+                            </ButtonDiv>
+                        </EditInput>
+                    </RecipeForm>
+                </div>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  recipes: state.recipes,
-  filteredRecipes: state.filteredRecipes
+    recipes: state.recipes,
+    filteredRecipes: state.filteredRecipes
 });
 
 export default connect(
-  mapStateToProps,
-  { editRecipe }
+    mapStateToProps,
+    { editRecipe }
 )(EditRecipeForm);
