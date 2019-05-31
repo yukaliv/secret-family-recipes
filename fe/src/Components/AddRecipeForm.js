@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import './AddRecipeForm.css';
 
-
 const RecipeForm = styled.div`
 display: flex;
 flex-direction: column;
@@ -53,7 +52,7 @@ margin: 20px 0 0 0;
 
 const Button = styled.button`
 margin: 20px;
-width: 160px;
+width: 180px;
 height: 40px;
 background: #6d748c;
 color: white;
@@ -154,8 +153,8 @@ class AddRecipeForm extends React.Component {
                             <ButtonDiv>
                                 <Button className='button'
                                     type='submit'
-                                    onClick={(event) => this.createRecipe(event)}> ADD YOUR RECIPE </Button>
-                                <Button onClick={event => this.cancelAdd(event)}>CANCEL</Button>
+                                    onClick={(event) => this.createRecipe(event)}>  Add Recipe </Button>
+                                <Button onClick={event => this.cancelAdd(event)}> Cancel</Button>
                             </ButtonDiv>
                         </div>
                     </RecipeForm>

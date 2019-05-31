@@ -60,8 +60,8 @@ export const addRecipe = (newRecipe) => dispatch => {
 }
 
 export const search = (searchString, recipes) => {
-
-    let filteredRecipes = recipes.filter(recipe => recipe.name.includes(searchString) || recipe.category.includes(searchString))
+    searchString= searchString.toLowerCase();
+    let filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchString) || recipe.category.toLowerCase().includes(searchString))
 
     return {
         type: SEARCH_RECIPE,

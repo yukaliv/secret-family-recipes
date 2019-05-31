@@ -17,6 +17,7 @@ import Signup from './Components/Signup';
 
 const AppDiv = styled.div`
 max-width: 1265px;
+height: 100%;
 margin: 0 0 ;
 font-family:  'Cherry Swash', cursive;
 @media (max-width: 1265px) {
@@ -92,6 +93,10 @@ border-bottom: solid 1px #1f1f44;
 const NavP = styled.p`
 padding: 0 25px;
 color: white;
+:hover {
+    color: #a00000;
+   
+  }
 @media (max-width: 500px) {
   font-size: 15px;
 }
@@ -100,6 +105,10 @@ color: white;
 const MenuP = styled.p`
 padding: 0 25px;
 color: #a00000;
+:hover {
+    color: #1f1f44;
+   
+  }
 @media (max-width: 500px) {
   font-size: 15px;
 }
@@ -159,10 +168,16 @@ class App extends React.Component {
   render() {
     return (
       <AppDiv>
-
+  
         <Header>
-          <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
-          <Link to='/signup' style={{ textDecoration: 'none' }}><NavP> SIGN UP </NavP></Link>
+          <a href='secret-family-recipes-ui.netlify.com' style={{ textDecoration: 'none' }}>HOME</a>
+        {localStorage.getItem("userToken") ? null : 
+       <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
+    }
+     
+     {localStorage.getItem("userToken") ? null : 
+       <Link to='/signup' style={{ textDecoration: 'none' }}><NavP> SIGN UP </NavP></Link>
+    }
           <NavP onClick={event => this.logout()}> LOG OUT </NavP>
         </Header>
 
@@ -194,7 +209,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  token: state.token
+  isLoggedIn: state.isLoggedIn
 })
 
 export default connect(mapStateToProps, {})(App);

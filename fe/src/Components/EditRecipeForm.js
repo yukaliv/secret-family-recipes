@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Recipe from "./Recipe";
 import "./EditRecipeForm.css";
 
+
 const RecipeForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,7 +71,7 @@ const ButtonDiv = styled.div`
 
 const Button = styled.button`
 margin: 20px;
-width: 150px;
+width: 180px;
 height: 40px;
 background: #6d748c;
 color: white;
@@ -182,15 +183,16 @@ class EditRecipeForm extends React.Component {
                                 ></textarea>
                             </EachInput>
                             <ButtonDiv>
+                          
                                 <Button
                                     className="button"
                                     type="submit"
                                     onClick={event => this.editRecipe(event)}
                                 >
                                     {" "}
-                                    UPDATE RECIPE{" "}
+                            Update Recipe{" "}
                                 </Button>
-                                <Button onClick={event => this.cancelEdit(event)}>CANCEL</Button>
+                                <Button onClick={event => this.cancelEdit(event)}>Cancel</Button>
                             </ButtonDiv>
                         </EditInput>
                     </RecipeForm>
