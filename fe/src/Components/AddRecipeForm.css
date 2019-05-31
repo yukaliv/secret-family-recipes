@@ -36,9 +36,9 @@
 
 
 select {
-    -webkit-appearance: none;
-    -moz-appearance   : none;
-    appearance        : none;
+    /* -webkit-appearance: none; */
+    /* -moz-appearance   : none;
+    appearance        : none; */
     width             : 270px;
     height            : 30px;
     /* margin            : 10px; */

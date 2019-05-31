@@ -15,6 +15,7 @@ border-style: none;
 border-bottom: #6d748c 1px solid;
 padding: 5px;
 font-weight: bold;
+outline: none;
 `;
 
 const LoginForm = styled.div`

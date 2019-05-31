@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import "./RecipeDetails.css";
+import { ReactComponent as EditIcon } from './Image/edit.svg';
+import { ReactComponent as DeleteIcon } from './Image/trash.svg';
 
 const Title = styled.div`
     display         : flex;
@@ -52,8 +54,9 @@ const ButtonDiv = styled.div`
     height: 50px;
 `;
 
+
 const Button = styled.button`
-width: 130px;
+width: 160px;
 height: 40px;
 background: #6d748c;
 color: white;
@@ -87,15 +90,15 @@ class Recipe extends React.Component {
             <div classname='recipe'>
                 <div className="eachRecipeImage">
                     <Title>
-                        <h2>~ {this.props.recipe.name} ~</h2>
-                        <h3> {this.props.recipe.category}</h3>
-                        <p>By {this.props.recipe.source}</p>
+                        <h1>~ {this.props.recipe.name} ~</h1>
+                        <p> {this.props.recipe.category} / Created by <strong>{this.props.recipe.source}</strong></p>
                         <ButtonDiv>
-                        <div>
-                            <Link to={`/editRecipe/${this.props.recipe.id}`}> <Button >Edit Recipe</Button></Link></div>
-                        <div>
-                            <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> Delete Recipe </Button></div>
-                    </ButtonDiv>
+                            <div className='eachButton'>
+
+                                <Link to={`/editRecipe/${this.props.recipe.id}`}> <Button ><EditIcon /> Edit Recipe</Button></Link></div>
+                                <div className='eachButton'>
+                                <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> <DeleteIcon /> Delete Recipe </Button></div>
+                        </ButtonDiv>
                     </Title>
 
                     <div className='instructions'>
@@ -105,7 +108,7 @@ class Recipe extends React.Component {
                                 <h4>INGREDIENTS </h4>
                             </div>
                             <div className='content'>
-                                <h5>{this.props.recipe.ingredients}</h5>
+                                <p>{this.props.recipe.ingredients}</p>
                             </div>
                         </MiddleContent>
 
@@ -113,12 +116,12 @@ class Recipe extends React.Component {
                             <div className='title'>
                                 <h4>INSTRUCTIONS </h4>  </div>
                             <div className='content'>
-                                <h5>{this.props.recipe.instructions}</h5>  </div>
+                                <p>{this.props.recipe.instructions}</p>  </div>
                         </MiddleContent>
 
                     </div>
 
-                   
+
 
                 </div>
             </div>
