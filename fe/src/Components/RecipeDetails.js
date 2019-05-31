@@ -12,7 +12,7 @@ const Title = styled.div`
     flex-direction  : column;
     justify-content : center;
     align-items     : center;
-    width: 450px;
+    width: 550px;
     height: 190px;
     border-radius   : 5px;
     background-color: #e3e3e3;
