@@ -1,5 +1,20 @@
 p {
-  margin: 0;
-  padding: 0 10px;
+    margin : 0;
+    padding: 0 10px;
 }
 
+.home {
+
+    color      : white;
+    font-family: 'Mitr', sans-serif;
+}
+
+:hover {
+    color: #a00000;
+}
+
+@media (max-width: 500px) {
+    .home {
+        font-size: 15px;
+    }
+}

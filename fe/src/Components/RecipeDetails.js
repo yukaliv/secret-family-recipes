@@ -98,7 +98,9 @@ class Recipe extends React.Component {
                                 <Link to={`/editRecipe/${this.props.recipe.id}`}> <Button ><EditIcon /> Edit Recipe</Button></Link></div>
                                 <div className='eachButton'>
                                 <Button onClick={(event) => this.deleteRecipe(this.props.recipe.id)}> <DeleteIcon /> Delete Recipe </Button></div>
+                                
                         </ButtonDiv>
+                        <text>Share: <text>{`${window.location.protocol}//${window.location.host}/recipes/share/${this.props.match.params.id}`}</text></text>
                     </Title>
 
                     <div className='instructions'>
@@ -118,7 +120,6 @@ class Recipe extends React.Component {
                             <div className='content'>
                                 <p>{this.props.recipe.instructions}</p>  </div>
                         </MiddleContent>
-
                     </div>
 
 
