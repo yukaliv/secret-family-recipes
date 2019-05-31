@@ -21,7 +21,7 @@ const Title = styled.div`
     line-height: 25px;
     padding: 15px;
     @media (max-width: 500px) {
-      width: 350px;
+      width: 380px;
     }
     `;
 
