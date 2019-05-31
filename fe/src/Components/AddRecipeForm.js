@@ -26,6 +26,7 @@ color: #0e1111 ;
 font-size: 15px;
 padding : 0 10px;
 display: block;
+
 `;
 
 const EachInput = styled.div`
