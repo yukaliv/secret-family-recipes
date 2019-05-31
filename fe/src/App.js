@@ -36,7 +36,6 @@ height: 45px;
 width: 1265px;
 font-family: 'Mitr', sans-serif;
 background-color:#6d748c;
-color:black;
 @media (max-width: 1265px) {
   width: 100%;
 }
@@ -170,7 +169,7 @@ class App extends React.Component {
       <AppDiv>
   
         <Header>
-          <a href='secret-family-recipes-ui.netlify.com' style={{ textDecoration: 'none' }}>HOME</a>
+        <NavP> <a href='https://secret-family-recipes-ui.netlify.com' className='home' style={{ textDecoration: 'none' }}>HOME</a></NavP> 
         {localStorage.getItem("userToken") ? null : 
        <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
     }
