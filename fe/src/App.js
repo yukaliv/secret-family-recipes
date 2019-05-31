@@ -169,7 +169,7 @@ class App extends React.Component {
       <AppDiv>
 
         <Header>
-          <NavP> <a href='https://secret-family-recipes-ui.netlify.com' className='home' style={{ textDecoration: 'none' }}>HOME</a></NavP>
+          <NavP> <a href='https://secret-family-recipes-ui2.netlify.com/' className='home' style={{ textDecoration: 'none' }}>HOME</a></NavP>
           {localStorage.getItem("userToken") ? null :
             <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
           }
