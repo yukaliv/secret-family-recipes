@@ -53,11 +53,12 @@ h5 {
 
 .content {
     padding : 0 30px;
-    font-size: 30px;
+    font-size: 25px;
+    line-height: 35px;
 }
 
 .title {
-    padding-bottom : 0;
+    padding-bottom : 20px;
 }
 
 .eachButton {
