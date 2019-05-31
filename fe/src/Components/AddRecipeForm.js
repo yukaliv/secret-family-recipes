@@ -58,6 +58,7 @@ height: 40px;
 background: #6d748c;
 color: white;
 font-size: 15px;
+outline: none;
 :hover {
     background-color: white;
     color: #6d748c;
@@ -97,7 +98,7 @@ class AddRecipeForm extends React.Component {
     render() {
         return (
             <div>
-                <div className='image'>
+                <div className='imageAdd'>
                     <RecipeForm>
                         <div className='recipeInput'>
                             <p className='title'>Share Your Favorite Recipe...</p>

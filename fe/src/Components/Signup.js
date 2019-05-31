@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { registerUser, loginUser } from '../Actions';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import './Signup.css';
 
 const Input = styled.input`
 width: 260px;
@@ -11,14 +12,13 @@ margin: 5px 0;
 background: transparent;
 font-size: 13px;
 border-style: none;
-border-bottom: lightgrey 1px solid;
+border-bottom:  #6d748c 1px solid;
 padding: 5px;
-
+font-weight: bold;
 `;
 
 const LoginForm = styled.div`
 max-width: 400px;
-width: 100%;
 margin: 50px auto;
 height: 300px;
 display: flex;
@@ -26,6 +26,18 @@ flex-direction: column;
 align-items: center;
 border: 1px solid lightgrey;
 padding: 20px;
+background-color: #e3e3e3;
+    opacity         : 0.9;
+@media (max-width: 800px) {
+   
+  width: 350px;
+  height: 300px;
+}
+@media (max-width: 500px) {
+
+    width: 250px;
+    height: 300px;
+    }
 `;
 
 const Button = styled.button`
@@ -38,7 +50,7 @@ font-family: 'Nunito', sans-serif;
 background: #6d748c;
 color: white;
 font-size: 15px;
-
+outline: none;
 :hover {
     background-color: white;
     color: #6d748c;
@@ -88,6 +100,7 @@ class Login extends React.Component {
 
         return (
             <div>
+                   <div className='imageSignup'>
                 <LoginForm>
                     <h1>Welcome</h1>
                     <Input
@@ -108,6 +121,7 @@ class Login extends React.Component {
                         <Button onClick={event=> this.registerUser(event)} >Sign Up</Button>
                     </LoginButton>
                 </LoginForm>
+                </div>
             </div>
         )
     }

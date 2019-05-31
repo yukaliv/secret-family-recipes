@@ -15,11 +15,9 @@ border-style: none;
 border-bottom: #6d748c 1px solid;
 padding: 5px;
 font-weight: bold;
-
 `;
 
 const LoginForm = styled.div`
-/* width: 85%; */
 width: 400px;
 margin: 50px auto;
 height: 300px;
@@ -53,7 +51,7 @@ font-family: 'Nunito', sans-serif;
 background: #6d748c;
 color: white;
 font-size: 15px;
-
+outline: none;
 :hover {
     background-color: white;
     color: #6d748c;

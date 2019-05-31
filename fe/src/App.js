@@ -137,6 +137,12 @@ margin-top: 50px;
 }
 @media (max-width: 800px) {
   width: 100%;
+   justify-content: center;
+}
+@media (max-width: 500px) {
+
+  width: 100%; 
+   justify-content: center;
 }
 `;
 
