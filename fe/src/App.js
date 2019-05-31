@@ -167,17 +167,21 @@ class App extends React.Component {
   render() {
     return (
       <AppDiv>
-  
+
         <Header>
-        <NavP> <a href='https://secret-family-recipes-ui.netlify.com' className='home' style={{ textDecoration: 'none' }}>HOME</a></NavP> 
-        {localStorage.getItem("userToken") ? null : 
-       <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
-    }
-     
-     {localStorage.getItem("userToken") ? null : 
-       <Link to='/signup' style={{ textDecoration: 'none' }}><NavP> SIGN UP </NavP></Link>
-    }
-          <NavP onClick={event => this.logout()}> LOG OUT </NavP>
+          <NavP> <a href='https://secret-family-recipes-ui.netlify.com' className='home' style={{ textDecoration: 'none' }}>HOME</a></NavP>
+          {localStorage.getItem("userToken") ? null :
+            <Link to='/login' style={{ textDecoration: 'none' }}><NavP> LOG IN </NavP></Link>
+          }
+
+          {localStorage.getItem("userToken") ? null :
+            <Link to='/signup' style={{ textDecoration: 'none' }}><NavP> SIGN UP </NavP></Link>
+          }
+
+          {localStorage.getItem("userToken") ? <NavP onClick={event => this.logout()}> LOG OUT </NavP> :
+            null
+          }
+
         </Header>
 
         <MainContent>
@@ -192,8 +196,9 @@ class App extends React.Component {
 
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
+          <Route exact path='/recipes/share/:id' component={RecipeDetails} />
           <PrivateRoute exact path='/recipes' component={RecipeList} />
-          <PrivateRoute path='/recipes/:id' component={RecipeDetails} />
+          <PrivateRoute exact path='/recipes/:id' component={RecipeDetails} />
           <PrivateRoute path='/addRecipe' component={AddRecipeForm} />
           <PrivateRoute path='/editRecipe/:id' component={EditRecipeForm} />
 
