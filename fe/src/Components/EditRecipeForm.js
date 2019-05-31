@@ -75,6 +75,7 @@ height: 40px;
 background: #6d748c;
 color: white;
 font-size: 15px;
+outline: none;
 :hover {
     background-color: white;
     color: #6d748c;

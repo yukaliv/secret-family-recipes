@@ -59,6 +59,7 @@ background: #6d748c;
 color: white;
 font-size: 15px;
 margin: 0 10px ;
+outline: none;
 :hover {
     background-color: white;
     color: #6d748c;

@@ -11,14 +11,25 @@ const EachRecipe = styled.div`
     justify-content : center;
     align-items     : center;
     width           : 318px;
-    height          : 340px;
+    height          : 250px;
     margin          : 30px 15px;
     line-height     : 25px;
-    border          : 2px dotted #6d748c;
+    border          : 2px dotted #1f1f44;
     border-radius   : 10px;
     @media (max-width: 500px) {
 height: 280px;
     }
+`;
+
+const TitleAndCategory = styled.div`
+display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+width           : 318px;
+    height          : 250px;
+background-color: #e3e3e3;
+    opacity         : 0.9;
 `;
 
 const Title = styled.p`
@@ -40,13 +51,15 @@ font-style: italic;
 
 
 const Button = styled.button`
-margin: 75px 0 0 0;
+margin: 20px 0;
 width: 150px;
 height: 40px;
 font-family: 'Nunito', sans-serif;
 background: #6d748c;
 color: white;
 font-size: 15px;
+border-radius: 10px;
+outline: none;
 
 :hover {
     background-color: white;
@@ -61,8 +74,10 @@ class Recipe extends React.Component {
         return (
 
             <EachRecipe>
-                <Title> <strong>~ {this.props.recipe.name} ~</strong></Title>
-                <Category>{this.props.recipe.category}</Category>
+                <TitleAndCategory>
+                    <Title> <strong>~ {this.props.recipe.name} ~</strong></Title>
+                    <Category>{this.props.recipe.category}</Category>
+                </TitleAndCategory>
 
                 <Link to={`/recipes/${this.props.recipe.id}`}><Button>Read Recipe</Button></Link>
             </EachRecipe>

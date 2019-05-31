@@ -1,10 +1,14 @@
-.image {
+.imageAdd {
     background-image: url('./Image/tomato.jpg');
     background-size : cover;
     resize          : both;
     overflow        : scroll;
     opacity         : 0.8;
     margin-top      : 50px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .recipeInput {

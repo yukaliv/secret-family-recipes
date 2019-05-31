@@ -16,8 +16,8 @@ import Signup from './Components/Signup';
 // @small-desktop: (max-width: 1265px)
 
 const AppDiv = styled.div`
-max-width: 1260px;
-margin: 0 auto;
+max-width: 1265px;
+margin: 0 0 ;
 font-family:  'Cherry Swash', cursive;
 @media (max-width: 1265px) {
   width: 100%;
@@ -43,7 +43,10 @@ color:black;
   width: 100%;
   justify-content: center;
 }
-
+@media (max-width: 500px) {
+  width: 100%;
+  justify-content: center;
+}
 `;
 
 const SubHeader = styled.header`
@@ -55,9 +58,12 @@ margin: 20px;
 color:#1f1f44;
 @media (max-width: 800px) {
   font-size: 20px;
+  justify-content: center;
 }
+
 @media (max-width: 500px) {
   font-size: 15px;
+  justify-content: center;
 }
 `;
 
@@ -69,6 +75,18 @@ padding: 15px;
 font-size: 20px;
 border-top: solid 1px #1f1f44;
 border-bottom: solid 1px #1f1f44;
+@media (max-width: 1265px) {
+  width: 100%;
+}
+@media (max-width: 800px) {
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 500px) {
+  width: 100%;
+  justify-content: center;
+  padding-left: 0;
+}
 `;
 
 const NavP = styled.p`
@@ -101,6 +119,11 @@ margin: 0 auto;
   width: 100%;
   align-items: center;
 }
+@media (max-width: 500px) {
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
 `;
 
 const Footer = styled.footer`
@@ -114,6 +137,12 @@ margin-top: 50px;
 }
 @media (max-width: 800px) {
   width: 100%;
+   justify-content: center;
+}
+@media (max-width: 500px) {
+
+  width: 100%; 
+   justify-content: center;
 }
 `;
 
